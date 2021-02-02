@@ -32,13 +32,13 @@
     <script>
      $.ajax({
         type: "GET",
-        url: "http://ip-api.com/json",
+        url: "https://api.ipify.org?format=json",
         success: function (response) {
-          ip = response;
+          ip = response.ip;
 
           $.post("/checkIp",
     {
-      ip: ip.query,
+      ip: ip,
     },
     function(data, status){
 

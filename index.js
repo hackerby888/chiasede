@@ -105,6 +105,7 @@ app.get('/unBanned:id', unBanned);
 //GetDeleleDE&&BannedIP
 app.get('/deleteDe:id', deleteDe);
 
+
 //GetNotFuond
 app.get('*', renderHome);
 
