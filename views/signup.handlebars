@@ -1,0 +1,37 @@
+
+<div class="main-login">
+
+    <div class="title-chiasede"><img src="../img/logonew.png" alt=""></div>
+    
+<form action="" class="form-dangnhap" method="POST">
+       <div class="input-group">
+            <input type="text" class="dangnhap-input" placeholder="{{tus.user}}" name="user" id="user-input-signup">
+           <input type="password" class="dangnhap-input" placeholder="{{tus.password}}" name="password" id="password-input-signup">
+       </div>
+
+       <div class="submit-group">
+           <a href="/login">Đăng Nhập</a>
+           <button type="submit">Tạo Ngay</button>
+       </div>
+</form>
+
+   
+
+</div>
+
+<script>
+    const user = $('#user-input-signup');
+    const password = $('#password-input-signup')
+    $('html').css('background', 'linear-gradient(120deg, #f6d365 0%, #fda085 100%)');
+    const container = $('#container');
+    container.css('overflow', 'hidden');
+    const content = $('#content');
+    content.css('overflow', 'hidden');
+    const wrapper = $('#wrapper');
+    wrapper.css('overflow', 'hidden');
+    const form = $('.form-dangnhap');
+
+     $('#page-signup').addClass('active');
+    var moreControllerfires = $('#more-controller');
+    moreControllerfires.slideToggle();
+</script

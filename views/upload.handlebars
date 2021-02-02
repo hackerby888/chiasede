@@ -1,0 +1,217 @@
+
+<input type="text" id="status" value="{{status}}" style="display: none;">
+
+<div class="main-login main-upload">
+
+    <div class="title-chiasede title-chiasede-upload"><img src="../img/logonew.png" alt=""></div>
+    
+<form action="" class="form-upload" method="POST" enctype="multipart/form-data" name="container-form">
+       <div class="input-group input-upload" id="input-upload">
+
+           {{!-- chon mon hoc --}}
+           <div class="mon-subtitle">Chọn môn học</div>
+           <select name="mon" id="chon-mon-hoc">
+               <option value="Toán">Toán</option>
+               <option value="N.văn">N.văn</option>
+               <option value="A.văn">A.văn</option>
+               <option value="GDCD">GDCD</option>
+               <option value="Tin học">Tin học</option>
+               <option value="Địa lí">Địa lí</option>
+               <option value="Vật lý">Vật lý</option>
+               <option value="Lịch sử">Lịch sử</option>
+               <option value="Công nghệ">Công nghệ</option>
+               <option value="Sinh học">Sinh học</option>
+           </select>
+
+           {{!-- chonkieude --}}
+            <div class="mon-subtitle">Chọn Kiểu Đề</div>
+           <select name="kieude" id="chon-kieu-de">
+               <option value="15 Phút">15 Phút</option>
+               <option value="1 Tiết">1 Tiết</option>
+           </select>
+ 
+            {{!-- soannoidung--}}
+            <div class="mon-subtitle">Nội dung </div>
+            <input type="file" multiple style="margin: 5px 0px;" name="gallery" id="file-input">
+
+            <div class="noidung noidung1">
+                <div class="index-socau">Câu 1</div>
+                <input type="text" class="input-soan-noi-dung" name="body" placeholder="{{tus}}" required>
+            </div>
+
+            
+
+           
+
+
+            
+       </div>
+
+       <div class="submit-group submit-upload">
+          <div class="controller-qs">
+               <div id="add-qs"><i class="far fa-plus-square"></i></div>
+               <div id="delete-qs"><i class="fas fa-minus-circle"></i></div>
+              
+               <div class="delete-tus-dis" style="font: 400 12px Arial;">-1 Câu Hỏi</div>
+          </div>
+           <button type="submit">Đăng Đề</button>
+       </div>
+</form>
+
+   
+
+</div>
+
+
+<script>
+
+    function show_add() {
+       controller_qs.append(` <div class="add-tus-act" style="font: 400 12px Arial;">+1 Câu Hỏi</div>`)
+    }
+    function re_show_add() {
+        $('.add-tus-act').remove();
+    }
+    
+    function show_del() {
+         controller_qs.append(` <div class="delete-tus-act" style="font: 400 12px Arial;">-1 Câu Hỏi</div>`)
+    }
+
+     function re_show_del() {
+        $('.delete-tus-act').remove();
+    }
+     const controller_qs = $(".controller-qs")
+    const tusDelete = $('.delete-tus-dis')
+    const tusAdd =  $('.add-tus-act')
+    const header = $('.header');
+    const mainUpload = $(".main-upload");
+    const statusValue = document.getElementById('status').getAttribute("value");
+    
+    if(statusValue == "success") {
+
+        mainUpload.css('height', 'initial')
+
+        mainUpload.html(`
+        <div class="toast-success">Đăng đề thành công!. Cảm ơn bạn</div>
+        <div class="backhome">Trở về trang chủ</div>
+        `)
+
+        const btntohome = $('.backhome');
+
+        btntohome.on('click', () => {
+            location.href = "/"
+        })
+
+    }
+
+    if(statusValue == "error") {
+
+        mainUpload.css("height", "initial")
+
+        
+
+        mainUpload.html(`
+        <div class="toast-error">Đăng đề thất bại!. Vui lòng kiểm tra lại nội dung</div>
+        <div class="backhome">Trở về trang chủ</div>
+        `)
+
+        const btntohome = $('.backhome');
+
+         btntohome.on('click', () => {
+            location.href = "/"
+        })
+
+    }
+    const form = document.forms['container-form'];
+    const btnSubmit = $('.submit-upload button');
+    const fileInput  = document.getElementById('file-input');
+    const container = $('#container');
+    const allInputText = document.getElementsByClassName('input-soan-noi-dung');
+    const noidungcauhoi = document.getElementsByClassName('noidung');
+    const btn_them_ch = $('#add-qs');
+    const ben_them_ch_2 = document.getElementById("add-qs")
+    const btn_xoa_ch = $('#delete-qs');
+    const inputUpload = $('#input-upload');
+    container.css('overflow', 'hidden');
+    $('html').css('background', 'linear-gradient(120deg, #f6d365 0%, #fda085 100%)');
+    $('#page-post').addClass('active');
+    var moreControllerfires = $('#more-controller');
+    moreControllerfires.slideToggle();
+    var index_cau = 1;
+
+    btn_them_ch.click(function() {
+
+        index_cau++;
+        if(index_cau <= 1 ) {
+            index_cau = 1;
+        }
+
+        if(index_cau > 40) {
+            swal("Chỉ có thể gửi tối đa 40 câu hỏi!")
+            return;
+        }
+
+        inputUpload.append(`<div class="noidung noidung${index_cau}">
+                <div class="index-socau">Câu ${index_cau}</div>
+                <input type="text" class="input-soan-noi-dung" name="body" required>
+            </div>`)
+
+            inputUpload.scrollTop($(`.noidung${index_cau}`).offset().top)
+            tusAdd.addClass('add-tus-act')
+            re_show_del();
+            re_show_add();
+                 show_add();
+            
+
+            
+
+
+    })
+
+    btn_xoa_ch.click(function() {
+
+        if(index_cau != 1) {
+
+            $(`.noidung${index_cau}`).remove();
+           index_cau--;   
+
+        }
+        re_show_del();
+         re_show_add();
+         show_del();
+        
+    })
+
+    btnSubmit.on('click', (e) => {
+
+
+        e.preventDefault();
+
+        swal({
+  title: "Bạn có chắc?",
+  text: "Bạn có chắc muốn đăng đề này? Nếu vi quy tắc bạn sẽ bị cấm vĩnh viễn",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+
+      form.submit();
+
+      
+    
+    
+  } else {
+    swal("Đã hủy đăng đề");
+  }
+});
+
+
+
+
+
+
+    })
+
+    header.css('box-shadow', '0px 0px 8px #656565')
+</script>

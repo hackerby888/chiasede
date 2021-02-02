@@ -1,0 +1,76 @@
+
+<!-- Add mousewheel plugin (this is optional) -->
+	<script type="text/javascript" src="fancybox/jquery.mousewheel.pack.js?v=3.1.3"></script>
+	<!-- Add fancyBox main JS and CSS files -->
+	<script type="text/javascript" src="fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+	<link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox.css?v=2.1.5" media="screen" />
+
+
+<div class="content-chi-tiet">
+    <div class="info-de">
+       {{#if admin}}
+         <a href="/deleteDe{{data.id}}" class="delete-de"><button>Xóa</button></a>
+        {{/if}}
+        <div class="info-de-table">
+            <div class="info-de-table-mon itemsviews" style="color: black;
+    font-weight: bold; font-style: italic">Kiểm tra môn: <span style="margin-left: 3px;
+    color: red;
+    font-weight: bold"> {{data.mon}}</span> </div>
+            <div class="info-de-table-kieude itemsviews" style="color: black;
+    font-weight: bold; font-style: italic">Thời gian: <span style="margin-left: 3px;
+    color: red;
+    font-weight: bold"> {{data.kieude}}</span> </div>
+            <div class="info-de-table-date itemsviews" style="color: black;
+    font-weight: bold; font-style: italic">Ngày kiểm tra: <span style="margin-left: 3px;
+    color: red;
+    font-weight: bold"> {{data.date}}</span></div>
+        </div>
+
+    </div>
+
+    <div class="noidung-de-parent">
+
+        <div class="noidung-de">
+
+            <div class="title-kiemtra" style="color: black;
+    font-weight: bold;">Kiểm Tra</div>
+            <div class="show-cau-hoi">
+
+             {{#each data.body}}
+                <div class="cauhoi-stt">
+                    <div class="index-so-cau-cauhoi">Câu {{sum @index 1}}</div>
+                    <div class="noi-dung-stt-cauhoi">{{this}}</div>
+                </div>
+                {{/each}}
+
+
+            </div>
+
+        </div>
+        
+
+    </div>
+    
+    <div class="show-anh-img">
+        {{#each data.img}}
+        <a href="" rel="group" style="display: none;"><img src="img/{{this}}" alt="" class="fancybox" style="width: 100%; height: 100%;"></a>
+        {{/each}}
+        {{#if data.img}}
+        <button class="xem-anh">Xem ảnh</button>
+        {{/if}}
+    </div>
+</div>
+
+<script>
+     const img = $('.show-anh-img a');
+     const btn = $('.show-anh-img button');
+     btn.on('click', function() {
+         img.css('display', 'block');
+         img.click();
+         
+     })
+     const container = $('#container');
+     container.css('overflow', 'hidden');
+     img.fancybox();
+
+</script>
