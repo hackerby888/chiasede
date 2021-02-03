@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "node-sass -w ./views/scss/home.scss ./public/css/home.css",
+    "watch": "node-sass -w ./views/scss/upload.scss ./public/css/upload.css",
     "start": "node ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
