@@ -3,7 +3,8 @@ html, body {
   height: 100%;
   padding: 0px;
   margin: 0px;
-  overflow: hidden; }
+  overflow: hidden;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 * {
   font-family: Arial, Helvetica, sans-serif;
@@ -106,7 +107,7 @@ a {
   position: fixed;
   top: 0;
   background: linear-gradient(120deg, #f6d365 0%, #fda085 100%) !important;
-  box-shadow: 0px 0px 8px #cccccc;
+  box-shadow: 0px 0px 8px #0000007a !important;
   z-index: 100; }
 
 .content {
@@ -126,7 +127,8 @@ a {
   top: 40px;
   bottom: 0px;
   width: 75%;
-  height: 100%; }
+  height: 100%;
+  z-index: 99; }
 
 .text-slider-title {
   padding-left: 21px;
@@ -223,15 +225,16 @@ select[name="mon"] {
   width: 90%;
   outline: none;
   background-color: #ffffff;
-  color: black;
-  padding: 3px;
+  color: #495057;
+  padding: 5px 3px;
   border: 1px solid #cccccc; }
 
 .noidung {
+  overflow: hidden;
   transition: all 0.2s linear;
   animation: show 0.3s ease-in;
   border: 1px solid #cccccc;
-  border-radius: 1px;
+  border-radius: 5px;
   font: 400 12px Arial;
   align-items: center;
   display: flex;
@@ -269,7 +272,7 @@ select[name="mon"] {
 .input-soan-noi-dung {
   transition: all 0.2s ease-in;
   transform-origin: left;
-  padding: 6.5px;
+  padding: 8px;
   outline: none;
   border: none;
   border-left: 1px solid #cccccc;
@@ -312,8 +315,8 @@ select[name="kieude"] {
   width: 90%;
   outline: none;
   background-color: #ffffff;
-  color: black;
-  padding: 3px;
+  color: #495057;
+  padding: 5px 3px;
   border: 1px solid #cccccc; }
 
 option {
@@ -322,10 +325,11 @@ option {
 
 .mon-subtitle {
   padding-left: 3px;
-  font: 400 13.3333px Arial;
-  margin: 0 auto 2px  auto;
+  font: 400 0.88rem Arial;
+  margin: 2px auto 5px  auto;
   width: 90%;
-  text-align: left; }
+  text-align: left;
+  color: #495057; }
 
 .submit-upload {
   padding: 0px;
@@ -334,6 +338,7 @@ option {
   height: 15% !important; }
 
 .input-upload {
+  padding-top: 15px !important;
   padding-bottom: 3px !important;
   overflow: auto;
   height: 85% !important; }
@@ -345,10 +350,17 @@ option {
   padding: 10px 0px 0px 0px; }
 
 .title-chiasede-upload {
-  height: 13% !important;
+  border-bottom: 1px solid rgba(26, 54, 126, 0.125);
+  height: 10% !important;
   padding: 0px !important;
-  position: absolute !important;
-  top: 0px; }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(13, 27, 62, 0.7);
+  top: 0px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  font-size: 0.9rem; }
 
 .index {
   border-right: 1px solid #bebebe;
@@ -503,6 +515,7 @@ option {
   flex: 1; }
 
 .show-anh-img {
+  padding: 3px 0px;
   width: 100%;
   flex: 1;
   position: relative; }
@@ -547,7 +560,7 @@ option {
 .noidung-de-parent {
   padding-top: 10px;
   width: 100%;
-  height: 70%; }
+  height: 68%; }
 
 .noidung-de {
   display: flex;
@@ -635,9 +648,7 @@ option {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 87%;
-  position: absolute;
-  top: 13%; }
+  height: 90%; }
 
 .input-group {
   padding-bottom: 30px;
@@ -729,7 +740,8 @@ option {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); }
 
 .main-upload {
-  height: 70%;
+  width: 90% !important;
+  height: 70% !important;
   position: relative; }
 
 .view-list-banned {

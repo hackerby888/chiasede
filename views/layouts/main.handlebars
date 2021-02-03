@@ -97,7 +97,9 @@
 
 </body>
 <script>
-
+      $(".items").on('click', (e) => {
+             e.target.classList.add("active")
+      })
     const slider = $('#slider');
     const btn_slider = $('#btn-slider');
     const moreController = $('#more-controller');
