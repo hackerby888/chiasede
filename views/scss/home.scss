@@ -3,7 +3,7 @@ html,body {
     height: 100%;
     padding: 0px;
     margin: 0px;
-    overflow: hidden;
+    overflow: scroll;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 }
 
@@ -976,7 +976,13 @@ option {
 @media (max-width: 739px) {
 
     .swal-modal {
-        width: calc(80% - 20px) !important;
+        width: calc(90% - 20px) !important;
     }
 
+}
+
+@media (max-width: 640px) {
+    .container {
+        min-height: 640px !important;
+    }
 }

@@ -64,20 +64,7 @@
 
 
 <script>
-    $('#a').css('height', window.innerHeight * 2 / 3 + "px")
-    setClick();
 
-    function setClick() {
-        var input_value = $('.input-soan-noi-dung');
-        input_value.on('click', (e) => {
-            swal("Write something here:", {
-  content: "input",
-})
-.then((value) => {
-  e.target.value = value;
-});
-        })
-    }
     function show_add() {
        controller_qs.append(` <div class="add-tus-act" style="font: 400 12px Arial;">+1 Câu Hỏi</div>`)
     }
@@ -167,7 +154,7 @@
                 <div class="index-socau">Câu ${index_cau}</div>
                 <input type="text" class="input-soan-noi-dung" name="body" required>
             </div>`)
-            setClick();
+
 
             inputUpload.scrollTop($(`.noidung${index_cau}`).offset().top)
             tusAdd.addClass('add-tus-act')  

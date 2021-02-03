@@ -9,6 +9,7 @@ var date = new Date();
     };
 
 function uploadData(req,res,next) {
+    console.log("ok")
     req.body.id = res.locals.id;
     req.body.date = date.toLocaleDateString("vi", options);
     req.body.img = res.locals.img;
