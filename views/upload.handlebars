@@ -1,7 +1,7 @@
 
 <input type="text" id="status" value="{{status}}" style="display: none;">
 
-<div class="main-login main-upload">
+<div class="main-login main-upload" id="a">
 
     <div class="title-chiasede title-chiasede-upload"><img src="../img/logonew.png" alt=""></div>
     
@@ -64,6 +64,7 @@
 
 
 <script>
+    $('#a').css('height', window.innerHeight * 2 / 3 + "px")
     setClick();
 
     function setClick() {
