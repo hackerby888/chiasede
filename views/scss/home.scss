@@ -145,9 +145,12 @@ a {
 }
 
 .text-slider-title {
-    padding-top: 12%;
     padding-left: 21px;
-    height: 10%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding-bottom: 15px ;
+   height: 15%;
 
 }
 
@@ -163,6 +166,7 @@ a {
 }
 
 .controller {
+    margin-top: 5px;
     padding-left: 21px;
     width: 100%;
     height: 40%;
@@ -299,7 +303,7 @@ select[name="mon"] {
     justify-content: center;
     border-right: 1px solid #ccc;
     width: 17%;
-    padding: 5px 0px;
+    padding: 7px 0px;
 }
 
 .noi-dung-stt-cauhoi {
@@ -785,7 +789,7 @@ option {
     outline: none;
     border-radius: 3px;
     border: 1px solid rgba(0,0,0,0.2);
-    height: 29%;
+    padding: 8px;
     width: 90%;
     transition: all 0.2s linear;
 }
@@ -882,7 +886,8 @@ option {
 .main-upload {
 
     position: relative;
-    height: 70%;
+    height: 70vh;
+    min-height: 70vh;
 }
 
 .view-list-banned {
