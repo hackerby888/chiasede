@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 const handlebars  = require('express-handlebars');
 //RequireRenderHome
 const renderHome = require('./controller/renderHome');

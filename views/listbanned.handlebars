@@ -4,7 +4,7 @@
 {{#each data}}
     <div class="show-list">
         <div class="index-list">#{{sum @index 1}}</div>
-        <div class="show-ip-banned">{{this.ip}}</div>
+        <div class="show-ip-banned">IP {{this.ip}}</div>
         <div class="controller-edit-banned">
             <a href="/unBanned{{this.ip}}"><button id="btn-active-ip">ACTIVE</button></a>
         </div>

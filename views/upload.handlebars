@@ -36,7 +36,7 @@
 
             <div class="noidung noidung1">
                 <div class="index-socau">Câu 1</div>
-                <input type="text" class="input-soan-noi-dung" name="body" placeholder="{{tus}}" required>
+                <input type="text" onclick="" class="input-soan-noi-dung" name="body" placeholder="{{tus}}" required>
             </div>
 
             
@@ -64,7 +64,19 @@
 
 
 <script>
+    setClick();
 
+    function setClick() {
+        var input_value = $('.input-soan-noi-dung');
+        input_value.on('click', (e) => {
+            swal("Write something here:", {
+  content: "input",
+})
+.then((value) => {
+  e.target.value = value;
+});
+        })
+    }
     function show_add() {
        controller_qs.append(` <div class="add-tus-act" style="font: 400 12px Arial;">+1 Câu Hỏi</div>`)
     }
@@ -154,12 +166,16 @@
                 <div class="index-socau">Câu ${index_cau}</div>
                 <input type="text" class="input-soan-noi-dung" name="body" required>
             </div>`)
+            setClick();
 
             inputUpload.scrollTop($(`.noidung${index_cau}`).offset().top)
-            tusAdd.addClass('add-tus-act')
+            tusAdd.addClass('add-tus-act')  
             re_show_del();
             re_show_add();
                  show_add();
+                 
+
+
             
 
             
@@ -214,4 +230,7 @@
     })
 
     header.css('box-shadow', '0px 0px 8px #656565')
+
+
+   
 </script>

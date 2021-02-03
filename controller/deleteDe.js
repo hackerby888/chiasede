@@ -1,41 +1,77 @@
 const dataModels = require('../Models/dataModel');
 const ipModels = require('../Models/ipModel');
+const fs = require("fs");
 var ip;
 var id;
+var img;
+//createFunctionBannedIP
+function bannedIp(ip, img, req,res,next) {
+    ipModels.find({ip: ip})
+    .then(data => {
 
+        if(data.length == 0) {
+        var band = new ipModels({ip: ip})
+         band.save()
+         .then(() => {
+            if(img.length == 0) {
+                res.redirect("/")
+            } else {
+                img.map(img => {
+                    fs.unlink(`./public/img/${img}`, function(err) {
+                        console.log(err)
+                    });
+                })
+                res.redirect("/")
+            }
+         })
+        } else {
+//
+if(img.length == 0) {
+    res.redirect("/")
+} else {
+    img.map(img => {
+        fs.unlink(`./public/img/${img}`, function(err) {
+            console.log(err)
+        });
+    })
+    res.redirect("/")
+}
+//
+        }
+        
+    })
+}
+
+//chinh
 function deleteDe(req,res,next) {
+
+
     if(req.cookies.admin_id) {
         if(req.cookies.admin_id.user == 'quycuoi673' && req.cookies.admin_id.password == 'quycuoi673vn') {
            dataModels.find({id: req.params.id})
            .then(data => {
                ip = data[0].ip;
                id = data[0].id;
+               img = data[0].img;
            })
            .then(() => {
-
-            dataModels.remove({id: id}, function(err) {
+               dataModels.remove({id: id}, (err) => {
                 if(!err) {
-                    var neww = new ipModels({ip: ip})
-                    neww.save()
-                    .then(() => {
-                     res.redirect('/')
-                    })
-                    .catch(next)
-                } else {
-                    next();
+                    bannedIp(ip, img, req,res,next);
                 }
-            })
-               
+               })
            })
-           .catch(next)
-           
-        } else {
-            res.redirect('/');
         }
-    } else {
-        res.redirect('/');
-    }
+        }
+
+    
 }
-
-
+          
 module.exports = deleteDe;
+
+
+
+
+
+
+
