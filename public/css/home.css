@@ -469,6 +469,8 @@ option {
   background: linear-gradient(120deg, #f6d365 0%, #fda085 100%) !important; }
 
 .content-chi-tiet {
+  transition: all 0.3s linear;
+  animation: scale 0.2s linear;
   font-family: Verdana, Geneva, Tahoma, sans-serif !important;
   position: relative;
   display: flex;
@@ -478,6 +480,16 @@ option {
   width: 90%;
   height: 70%;
   box-shadow: 0px 0px 10px #cccccc; }
+
+@keyframes scale {
+  from {
+    margin-left: -30px;
+    opacity: 0;
+    transform: scale(0); }
+  to {
+    margin-left: 0px;
+    opacity: 1;
+    transform: scale(1); } }
 
 .type-views {
   top: 0;
