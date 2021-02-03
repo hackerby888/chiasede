@@ -848,12 +848,13 @@ option {
 }
 
 #add-qs {
+    margin-left: 10px;
+    padding: 8px 10px;
     transition: all 0.2s linear;
     border-radius: 3px;
     font-size: 0.75rem;
     background-color: rgb(0, 223, 0);
     color: white;
-    padding: 8px;
 }
 
 #add-qs:active {
@@ -865,13 +866,13 @@ option {
 }
 
 #delete-qs {
+    padding: 8px 10px;
     transition: all 0.2s linear;
     margin-left: 10px;
     border-radius: 3px;
     font-size: 0.75rem;
     background-color: rgb(255, 187, 0);
     color: white;
-    padding: 8px;
 }
 
 .controller-qs {
@@ -895,11 +896,16 @@ option {
 }
 
 .main-upload {
-    width: 90% !important;
+    transition: all 0.2s linear;
+        width: 90% !important;
     height: 70% !important;
 
     position: relative;
     
+}
+
+.container,.content,.wrapper{
+    transition: all 0.2s linear;
 }
 
 .view-list-banned {
@@ -979,10 +985,4 @@ option {
         width: calc(90% - 20px) !important;
     }
 
-}
-
-@media (max-width: 640px) {
-    .container {
-        min-height: 640px !important;
-    }
 }
