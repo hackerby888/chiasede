@@ -239,7 +239,7 @@ a {
     display: flex;
     border-radius: 5px;
     background-color: white;
-    box-shadow: 0px 0px 5px #cccccc;
+    box-shadow: 0px 0px 5px #979797;
     width: 80%;
     margin-top: 15px;
 }
@@ -912,14 +912,6 @@ option {
 
 }
 
-.main-upload {
-    transition: all 0.2s linear;
-        width: 90% !important;
-    height: 70% !important;
-
-    position: relative;
-    
-}
 
 .container,.content,.wrapper{
     transition: all 0.2s linear;
@@ -1002,4 +994,50 @@ option {
         width: calc(90% - 20px) !important;
     }
 
+}
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.main-upload {
+   
+    transition: all 0.2s linear;
+        width: 90% !important;
+    height: 70%;
+
+    position: relative;
+    animation: slideUp 0.3s ease-in-out;
+}
+
+a {
+    transition: all 0.2s linear;
+}
+
+a:active {
+    transform: scale(1.1);
+}
+
+@keyframes fade2 {
+    from{
+        transform: scale(0.8);
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+.show-animation-list {
+
+    transition: all 0.3s linear;
+    animation: fade2 0.35s linear;
+    
 }

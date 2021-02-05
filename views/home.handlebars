@@ -23,9 +23,15 @@
 
 
 <script>
-
+    var delay = 0;
     $('#page-home').addClass('active');
-    
+    for(list of $('.list')) {
+
+     list.style.animationDelay= `${delay}s`
+
+        list.classList.add('show-animation-list')
+        delay += 0.1
+    }
 </script>
 
 
