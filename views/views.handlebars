@@ -56,6 +56,8 @@
         <a href="" rel="group" style="display: none;"><img src="img/{{this}}" alt="" class="fancybox" style="width: 100%; height: 100%;"></a>
         {{/each}}
         {{#if data.img}}
+       <span class="message-img-view" style="color: rgb(46, 46, 46);">Click vào bên trái hoặc phải ảnh <br> để
+           di chuyển ảnh!</span>
         <button class="xem-anh">Xem ảnh</button>
         {{/if}}
     </div>
@@ -73,6 +75,6 @@
      container.css('overflow', 'hidden');
      img.fancybox();
 
-     swal("Chú Ý!", "Click vào bên phải hoặc trái ảnh để đổi ảnh!");
+   
 
 </script>

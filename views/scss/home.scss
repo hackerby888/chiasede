@@ -500,6 +500,15 @@ option {
     
 }
 
+.message-img-view {
+    position: absolute;
+    left: 5px;
+    flex: 1;
+    font-size: 0.85rem;
+    font-style: italic;
+
+}
+
 .title .subject {
     box-shadow: 0px 0px 3px #bebebe;
     border-radius: 7px 0px 7px 0px;
@@ -568,6 +577,7 @@ option {
 .content-chi-tiet {
     transition: all 0.3s linear;
     animation: scale 0.2s linear;
+    animation-delay: 0.1s;
     font-family: Verdana, Geneva, Tahoma, sans-serif !important;
     position: relative;
     display: flex;
@@ -583,7 +593,7 @@ option {
     from{
         margin-left: -30px;
         opacity: 0;
-       transform: scale(0);
+       transform: scale(0) ;
     }
     to{
         margin-left: 0px;
@@ -633,6 +643,9 @@ option {
 }
 
 .show-anh-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 3px 0px;
     width: 100%;
     flex: 1;
