@@ -31,7 +31,7 @@
            </select>
  
             {{!-- soannoidung--}}
-            <div class="mon-subtitle">Nội dung </div>
+            <div class="mon-subtitle">Nội dung ( Tối đa 8 ảnh )</div>
             <input type="file" multiple style="margin: 5px 0px;" name="gallery" id="file-input" accept="image/*">
 
             <div class="noidung noidung1">
@@ -200,9 +200,18 @@
 .then((willDelete) => {
   if (willDelete) {
 
-      form.submit();
-
       
+    if(fileInput.files.length > 8) {
+
+        swal({
+  title: "Thất Bại!",
+  text: "Bạn không được chọn quá 8 ảnh!",
+  icon: "error",
+  button: "OK",
+});
+    } else {
+        form.submit();
+    }
     
     
   } else {

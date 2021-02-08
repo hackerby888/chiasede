@@ -477,8 +477,7 @@ option {
 
 .content-chi-tiet {
   transition: all 0.3s linear;
-  animation: scale 0.2s linear;
-  animation-delay: 0.1s;
+  animation: scale 0.3s linear;
   font-family: Verdana, Geneva, Tahoma, sans-serif !important;
   position: relative;
   display: flex;
