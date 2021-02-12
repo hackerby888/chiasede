@@ -65,6 +65,28 @@
 </script>
 </head>
 <body>
+    <div class="popup-show-message-modal" id="popup-show-message-modal">
+        <div class="box-popup" id="box-popup">
+            <div class="thong-bao-popup"><span>Thông báo</span></div>
+            <div class="noidung-popup">
+<div>                <span> - Bạn đang ở khu khối </span> <span style="color: red; font-weight: bold" id="number-khoi">10</span></div>
+                <div><span id="chiase-messgae-popop-content"> - Hãy tích cực chia sẻ đề để phát triển Web nhé các bạn và đừng nên đăng những thứ gì ngoài nội dung đề!</span></div>
+                  <div><span id="chiase-messgae-popop-content" style="color:  inherit;"> - Để thay đổi  <span style="color: #007bff; font-weight: bold">Lớp</span>, bạn hãy click vào nút ở thanh <span style="color: #007bff; font-weight: bold">Header</span> đầu web</span></div>
+            </div>
+            <div class="close-popup-form">
+                <button id="btn-close-modal">CLOSE</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="change-khoi-popup-modal">
+                <div class="chose-table-box">
+                    <span style="margin-top: 3px; font-style: italic;">Vui lòng chọn khối cần đến!</span>
+                    <a href="/khoi-10">Khối 10</a>
+                    <a href="/khoi-11">Khối 11</a>
+                    <a href="/khoi-12">Khối 12</a>
+                </div>
+    </div>
     
       
       <div class="container" id="container">
@@ -77,7 +99,7 @@
             <div class="slider slider-off" id="slider">
                 <div class="text-slider-title"><span>Bảng Điều Khiển</span></div>
                 <div class="controller">
-                    <a href="/"><div class="home items" id="page-home"><i class="fas fa-home"></i>Home - Khối 10</div></a>
+                    <a href="/" id="btn-to-home"><div class="home items" id="page-home"><i class="fas fa-home"></i><span id="show-khoi-drawer">Home - Khối 10</span></div></a>
                      <div class="more items" id="btn-show-more"><i class="fas fa-cog"></i>Tiện Ích</div>
                      <div class="more-controller" id="more-controller">
                          <a href="/upload"><div class="more-upload items more" id="page-post"><i class="fas fa-folder-plus"></i>Đăng Bài</div></a>
@@ -98,6 +120,27 @@
 
 </body>
 <script>
+      const showKhoi = $('#show-khoi')
+      const modal = $('#popup-show-message-modal');
+      const btnClose = document.getElementById('btn-close-modal')
+      
+      const box = $('#box-popup');
+
+      btnClose.addEventListener('click', () => {
+          box.addClass('animation-box');
+           modal.addClass('animateModal')
+            setTimeout(() => {
+              modal.css('display', 'none')
+          }, 150)
+          
+      })
+
+      showKhoi.on('click', () => {
+         
+});
+    
+
+     
     
       $(".items").on('click', (e) => {
              e.target.classList.add("active")
@@ -107,18 +150,28 @@
     const moreController = $('#more-controller');
     const btnshowMore = $('#btn-show-more');
     moreController.slideToggle();
+    const numberKhoi = $('#number-khoi');
+    var clickShowChage = 0;
+
+    var click = 0;
    
     var clickValue = 0;
 
     btnshowMore.click(() => {
-
+         click++;
+         if(click == 2) {
+             btnshowMore.removeClass('active')
+             click = 0;
+         }
          moreController.slideToggle();
 
     })
 
     btn_slider.click(function() {
+
         
-        slider.toggleClass('slider-on')
+        
+        slider.toggleClass('slider-on');    
         
     })
 
@@ -129,5 +182,36 @@
     })
 
 
+      //checkCurrentKhoi
+            if(document.cookie.includes("url=10")) {
+                document.getElementById('btn-to-home').href = '/khoi-10'
+                $('#show-khoi-drawer').html('Home - Khối 10')
+          }
+
+           if(document.cookie.includes("url=11")) {
+               document.getElementById('btn-to-home').href = '/khoi-11'
+                numberKhoi.html('11')
+                showKhoi.html('Khối 11')
+                $('#show-khoi-drawer').html('Home - Khối 11')
+          }
+
+          if(document.cookie.includes("url=12")) {
+            document.getElementById('btn-to-home').href = '/khoi-12'
+               numberKhoi.html('12')
+               showKhoi.html('Khối 12')
+               $('#show-khoi-drawer').html('Home - Khối 12')
+          }
+
+
+          $('#show-khoi').click(() => {
+              $('.chose-table-box').addClass('show-popup-change-animation')
+            $('.change-khoi-popup-modal').css('display', 'block');
+          })
+
+          $('.change-khoi-popup-modal').click((e) => {
+                $('.chose-table-box').remove('show-popup-change-animation')
+            e.target.style.display = 'none'
+          })
+          
 </script>
 </html>

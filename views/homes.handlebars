@@ -1,0 +1,42 @@
+
+{{#each data.data}}
+<div class="list">
+
+       <div class="index">
+           <span class="indexNumber">#{{this.id}}</span>
+       </div>
+       <div class="info">
+           <div class="title">
+               <div class="subject">{{this.mon}}</div>
+               <div class="date">{{this.date}}</div>
+           </div>
+           <div class="views">
+               <div class="mon">{{this.kieude}}</div>
+               <a href="/viewss{{this.id}}"><button class="btn-viewMore">Xem</button></a>
+               
+           </div>
+       </div>
+</div>
+{{/each}}
+
+<div class="border"></div>
+
+
+<script>
+    var delay = 0;
+    $('#page-home').addClass('active');
+    $('#show-khoi-drawer').html('Home - Khối 11')
+    for(list of $('.list')) {
+
+     list.style.animationDelay= `${delay}s`
+
+        list.classList.add('show-animation-list')
+        delay += 0.1
+    }
+</script>
+
+
+
+
+
+

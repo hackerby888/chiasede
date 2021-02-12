@@ -1,7 +1,7 @@
 const dataModel = require('../Models/dataModel')
 const mongoose = require('mongoose')
 function renderHome(req,res,next) {
-
+   
     dataModel.find({}).sort( { id: -1} )
     .then((data) => {
         

@@ -9,10 +9,10 @@ function login(req,res,next) {
                 if(req.body.user.includes("<") == false && req.body.user.includes(">") == false && req.body.user.includes("script") == false && req.body.password.includes("<") == false && req.body.password.includes(">") == false && req.body.password.includes("script") == false && req.body.user.includes("==") == false && req.body.user.includes("||") == false) {
 
                     res.cookie("admin_id", {
-                        user: "quycuoi673",
-                        password: "quycuoi673vn"
+                        user: req.body.user,
+                        password: req.body.password
                     })
-                    res.redirect('/')
+                    res.redirect('/khoi-10')
 
                 } else {
 

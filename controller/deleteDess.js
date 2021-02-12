@@ -1,4 +1,4 @@
-const dataModels = require('../Models/dataModel');
+const dataModels = require('../Models/dataModelss');
 const ipModels = require('../Models/ipModel');
 const fs = require("fs");
 var ip;
@@ -14,27 +14,27 @@ function bannedIp(ip, img, req,res,next) {
          band.save()
          .then(() => {
             if(img.length == 0) {
-                res.redirect("/khoi-10")
+                res.redirect("/khoi-12")
             } else {
                 img.map(img => {
                     fs.unlink(`./public/img/${img}`, function(err) {
                         console.log(err)
                     });
                 })
-                res.redirect("/khoi-10")
+                res.redirect("/khoi-12")
             }
          })
         } else {
 //
 if(img.length == 0) {
-    res.redirect("/khoi-10")
+    res.redirect("/khoi-12")
 } else {
     img.map(img => {
         fs.unlink(`./public/img/${img}`, function(err) {
             console.log(err)
         });
     })
-    res.redirect("/khoi-10")
+    res.redirect("/khoi-12")
 }
 //
         }

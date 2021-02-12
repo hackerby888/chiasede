@@ -1,4 +1,4 @@
-const dataModel = require('../Models/dataModel');
+const dataModel = require('../Models/dataModelss');
 const userModel = require('../Models/userModel');
 var dataViews;
 
@@ -19,18 +19,18 @@ function renderViews(req,res,next) {
 
                 //checkPassword
                 if(data.password === pass) {
-                    res.render('views', {data: dataViews, admin: "true"})
+                    res.render('viewsss', {data: dataViews, admin: "true"})
                 } else {
-                    res.render('views', {data: dataViews})
+                    res.render('viewsss', {data: dataViews})
                 }
 
             } else {
-                res.render('views', {data: dataViews})
+                res.render('viewsss', {data: dataViews})
             }
         })
 
        } else {
-        res.render('views', {data: dataViews})
+        res.render('viewsss', {data: dataViews})
        }
         
     })

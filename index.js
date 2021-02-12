@@ -11,6 +11,8 @@ const renderViews = require('./controller/renderViews');
 const renderLogin = require('./controller/renderLogin');
 //RequireCreateAccount
 const renderSignup = require('./controller/renderSignup');
+//RequireRenderHomess
+const renderHomess = require('./controller/renderHomess');
 //Mongoose
 const mongoose = require('mongoose');
 //RsrenderUpload
@@ -29,12 +31,28 @@ const login = require('./controller/login');
 const unBanned = require('./controller/unBanned');
 //RequireSignUp
 const signup = require('./controller/signup');
+//RequireCheckAdmin
+const checkAdmin = require('./controller/checkAdmin')
 //RequireCheckRole
 const checkRole = require('./controller/checkRole');
 //RequirerenderListbennded
 const renderlistBanned = require('./controller/renderlistBanned');
+//RequiredeleteDes
+const deleteDes = require('./controller/deleteDes');
+//RequireCreateCookieUrl
+const createCookieUrl = require('./controller/createCookieUrl');
+//RequireRenderViewsss
+const renderViewsss = require('./controller/renderViewsss')
 //RequireDeleteDe
-const deleteDe = require('./controller/deleteDe')
+const deleteDe = require('./controller/deleteDe');
+//RequireDeleteDess
+const deleteDess = require('./controller/deleteDess')
+//RequireCheckUrl
+const checkUrl = require('./controller/checkUrl');
+//RequireRenderHome1
+const renderHomes = require('./controller/renderHomes');
+//RequireRenderViess
+const renderViewss = require('./controller/renderViewss');
 //RequireMulter
 const multer = require('multer');
 var upload = multer({ dest: 'public/img' });
@@ -72,10 +90,21 @@ mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true, useCreat
 
 //Endpoint
 
+//[GET]KHoi12
+app.get('/khoi-12',createCookieUrl, renderHomess)
+
+//GET[Khoi11]
+app.get('/khoi-11', createCookieUrl, renderHomes);
+
 //[GET Home]
-app.get('/', renderHome);
+app.get('/khoi-10', createCookieUrl, renderHome);
+
+//[GET Home]
+app.get('/', checkUrl);
 
 //[GET Views]
+app.get('/viewsss:id', renderViewsss);
+app.get('/viewss:id', renderViewss);
 app.get('/views:id', renderViews);
 
 //[GET Login]
@@ -88,7 +117,7 @@ app.get('/upload', renderUpload);
 app.post('/upload',cpUpload, checkId, uploadData);
 
 //Reset ID
-app.get('/resetId', resetId);
+app.get('/resetId', checkAdmin, resetId);
 
 //CheckIp
 app.post('/checkIp', checkIp);
@@ -100,14 +129,21 @@ app.post('/checkRole', checkRole);
 app.get('/listBanned', renderlistBanned);
 
 //GetUnnbaned
-app.get('/unBanned:id', unBanned);
+app.get('/unBanned:id', checkAdmin, unBanned);
+
+//setUrl
+app.post('/setUrl', createCookieUrl);
 
 //GetDeleleDE&&BannedIP
-app.get('/deleteDe:id', deleteDe);
-
+app.get('/deleteDess:id', checkAdmin, deleteDess);
+app.get('/deleteDes:id', checkAdmin, deleteDes);
+app.get('/deleteDe:id', checkAdmin, deleteDe);
+app.get('/deleteAll', checkAdmin, deleteAll);
 
 //GetNotFuond
-app.get('*', renderHome);
+app.get('*', (req,res,next) => {
+  res.render('errorNotFoundPage')
+});
 
 
 

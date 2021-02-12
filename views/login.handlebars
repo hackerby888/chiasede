@@ -1,15 +1,26 @@
 
 <div class="main-login">
 
-    <div class="title-chiasede"><img src="../img/logonew.png" alt=""></div>
+    <div class="title-chiasede"><h4><b id="chiase-string">ChiaSe</b><span style="font-weight: 500 ;">De</span></h4></div>
+    <div class="status-login" >Administrator Acess Panel</div>
 <form action="" class="form-dangnhap" method="POST">
        <div class="input-group">
-            <input type="text" class="dangnhap-input" placeholder="{{tus.user}}" name="user">
-            <input type="password" class="dangnhap-input" placeholder="{{tus.password}}" name="password">
+             <div class="thanh-login-1 parent-input" id="pi1">
+
+ <input type="text" class="input-login-form" placeholder="Type Username" name="user">
+ <div class="icon-user"><i class="fas fa-user"></i></div>
+
+             </div>
+             <div class="thanh-login-2 parent-input" id="pi2">
+
+            <input type="password" class="input-login-form" placeholder="Type Password" name="password">
+ <div class="icon-user"><i class="fas fa-lock"></i></div>
+             </div>
+
        </div>
 
        <div class="submit-group">
-           <button type="submit">Đăng Nhập</button>
+           <button type="submit" style="background-color: #007bff;">Acess</button>
        </div>
 </form>
 
@@ -18,11 +29,32 @@
 </div>
 
 <script>
+    var input_for;
+    var size;
+    const input = $('.input-login-form')
+    const iconUser = $('.icon-user')
+    const pi1Height = $('#pi1').css('height');
+    const pi2Height = $('#pi2').css('height');
     const header = $('.header');
     header.css('box-shadow', '0px 0px 8px #656565')
     const container = $('#container');
     container.css('overflow', 'visible');
-    $('html').css('background', 'linear-gradient(120deg, #f6d365 0%, #fda085 100%)');
+    $('html').css('background', '#e9ecef');
     var moreControllerfires = $('#more-controller');
     moreControllerfires.slideToggle();
+
+    for(var array of iconUser) {
+        array.style.height = pi1Height;
+    }
+
+    for(var sizeInput of input) {
+        input_for = $(sizeInput)
+        size = parseInt(input_for.css('padding-top').replace(/px/g, '')) + 1;
+        input_for.css('padding-top', size + "px")
+        input_for.css('padding-bottom', size + "px")
+    }
+
+ $('#popup-show-message-modal').css('display', 'none')
+     $('#header').css('display', 'none')
+    
 </script>

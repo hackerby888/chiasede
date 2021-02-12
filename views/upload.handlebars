@@ -1,10 +1,10 @@
 <link rel="stylesheet" href="css/upload.css">
 <input type="text" id="status" value="{{status}}" style="display: none;">
+<input type="text" id="urlback" value="{{urlback}}" style="display: none;">
 
 <div class="main-login main-upload" id="a">
 
-    <div class="title-chiasede-upload title-chiasede"><span>UPLOAD FORM</span></div>
-    
+    <div class="title-chiasede-upload title-chiasede"><b id="chiase-string" id="upload-chiase">ChiaSe</b><span style="font-weight: 500 ;">De</span></div>
 <form action="" class="form-upload" method="POST" enctype="multipart/form-data" name="container-form">
        <div class="input-group input-upload" id="input-upload">
 
@@ -15,6 +15,7 @@
                <option value="N.văn">N.văn</option>
                <option value="A.văn">A.văn</option>
                <option value="GDCD">GDCD</option>
+               <option value="Hóa">Hóa</option>
                <option value="Tin học">Tin học</option>
                <option value="Địa lí">Địa lí</option>
                <option value="Vật lý">Vật lý</option>
@@ -31,7 +32,7 @@
            </select>
  
             {{!-- soannoidung--}}
-            <div class="mon-subtitle">Nội dung ( Tối đa 8 ảnh )</div>
+            <div class="mon-subtitle">Nội dung ( Tối đa 8 ảnh & 25MB)</div>
             <input type="file" multiple style="margin: 5px 0px;" name="gallery" id="file-input" accept="image/*">
 
             <div class="noidung noidung1">
@@ -87,38 +88,34 @@
     const statusValue = document.getElementById('status').getAttribute("value");
     
     if(statusValue == "success") {
-
+$('#popup-show-message-modal').css('display', 'none')
         mainUpload.css('height', 'initial')
 
         mainUpload.html(`
         <div class="toast-success">Đăng đề thành công!. Cảm ơn bạn</div>
-        <div class="backhome">Trở về trang chủ</div>
+        <a class="backhome" href="${document.getElementById('urlback').value}">Trở về trang chủ</a>
         `)
 
         const btntohome = $('.backhome');
 
         btntohome.on('click', () => {
-            location.href = "/"
+            location.href = $('#')
         })
 
     }
 
     if(statusValue == "error") {
-
+        $('#popup-show-message-modal').css('display', 'none')
         mainUpload.css("height", "initial")
 
         
 
         mainUpload.html(`
         <div class="toast-error">Đăng đề thất bại!. Vui lòng kiểm tra lại nội dung</div>
-        <div class="backhome">Trở về trang chủ</div>
+        <a class="backhome" href="${document.getElementById('urlback').value}">Trở về trang chủ</a>
         `)
 
-        const btntohome = $('.backhome');
 
-         btntohome.on('click', () => {
-            location.href = "/"
-        })
 
     }
     const form = document.forms['container-form'];
@@ -154,7 +151,6 @@
                 <div class="index-socau">Câu ${index_cau}</div>
                 <input type="text" class="input-soan-noi-dung" name="body" required>
             </div>`)
-
 
             inputUpload.scrollTop($(`.noidung${index_cau}`).offset().top)
             tusAdd.addClass('add-tus-act')  

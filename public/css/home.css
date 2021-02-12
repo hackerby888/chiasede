@@ -14,6 +14,27 @@ html, body {
 a {
   text-decoration: none; }
 
+#show-khoi {
+  color: white;
+  font-size: 0.8rem;
+  padding: 5px;
+  border: 2px solid white;
+  position: absolute;
+  right: 20px; }
+
+.animateModal {
+  animation: modalHide 0.2s linear; }
+
+@keyframes modalHide {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+.swal-button-container button {
+  width: auto !important;
+  padding: 10px; }
+
 .toast-success {
   display: flex;
   justify-content: center;
@@ -26,6 +47,87 @@ a {
   background-color: #d4edda;
   border-color: #c3e6cb;
   border-radius: .25rem; }
+
+.popup-show-message-modal {
+  padding-top: 10px;
+  display: block;
+  z-index: 10000;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5); }
+
+.thong-bao-popup {
+  font-weight: 500;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 18px;
+  padding: 15px; }
+
+.animation-box {
+  animation: hideBox 0.3s linear !important; }
+
+@keyframes hideBox {
+  from {
+    opacity: 1;
+    transform: translateY(0%); }
+  to {
+    display: none;
+    opacity: 0;
+    transform: translateY(-70%); } }
+
+.box-popup {
+  animation: showPopup 0.3s linear;
+  overflow: hidden;
+  width: 90%;
+  background-color: white;
+  margin: 0 auto;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); }
+
+@keyframes showPopup {
+  from {
+    transform: translateY(-20%); }
+  to {
+    transform: translateY(0%); } }
+
+#chiase-messgae-popop-content {
+  color: red; }
+
+.noidung-popup {
+  padding: 10px;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.6; }
+
+.close-popup-form {
+  border-top: 1px solid #e5e5e5;
+  width: 100%;
+  padding: 22px;
+  position: relative;
+  display: flex;
+  align-items: center; }
+
+.close-popup-form button {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 1.6;
+  outline: none;
+  color: #333;
+  position: absolute;
+  padding: 6px;
+  right: 10px;
+  background: none;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px; }
+
+.close-popup-form button:focus {
+  color: white;
+  background: #e6e6e6; }
+
+.noidung-popup div {
+  margin-top: 5px; }
 
 .add-tus-act {
   display: block !important;
@@ -100,6 +202,7 @@ a {
   height: calc(100% - 40px); }
 
 .header {
+  position: relative;
   margin: 0;
   display: flex;
   align-items: center;
@@ -169,10 +272,10 @@ a {
 
 .more-controller {
   margin-left: 10%;
-  border-radius: 5px;
   border-left: 2px solid #cccccc;
   width: 100%;
-  padding-left: 20px; }
+  padding-left: 20px;
+  margin-top: 10px; }
 
 .more {
   margin-top: 5px; }
@@ -209,6 +312,7 @@ a {
   margin-top: 15px; }
 
 .main-login {
+  border-top: 3px solid #007bff;
   text-align: center;
   flex-direction: column;
   align-items: center;
@@ -332,6 +436,60 @@ option {
   text-align: left;
   color: #495057; }
 
+h4:hover {
+  color: #007bff !important; }
+
+h4 {
+  font-size: 1.4em;
+  margin: 5px 0px 5px 0px; }
+
+.icon-user {
+  background-color: #e9ecef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10%; }
+
+b {
+  margin-right: 5px;
+  font-style: italic; }
+
+.input-login-form {
+  box-sizing: border-box;
+  flex: 1;
+  outline: none;
+  border: 1px solid transparent;
+  height: 100% !important;
+  padding: 0;
+  padding-left: 8px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-right: 1px solid rgba(0, 0, 0, 0.125); }
+
+.input-login-form:focus {
+  border: 1px solid #007bff; }
+
+.status-login {
+  font-style: italic;
+  font-size: 0.9rem;
+  width: 100%;
+  padding-top: 10px; }
+
+.parent-input {
+  box-sizing: border-box;
+  position: relative;
+  border-radius: 4px;
+  margin: 0 auto;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  width: 90%;
+  margin-top: 15px;
+  padding: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
 .submit-upload {
   padding: 0px;
   position: absolute;
@@ -345,10 +503,11 @@ option {
   height: 85% !important; }
 
 .title-chiasede {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 1.2rem;
   width: 100%;
-  padding: 10px 0px 0px 0px; }
+  padding: 10px 0px 5px 0px; }
 
 .title-chiasede-upload {
   border-bottom: 1px solid rgba(26, 54, 126, 0.125);
@@ -361,7 +520,7 @@ option {
   top: 0px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
-  font-size: 0.9rem; }
+  font-size: 1.6rem; }
 
 .index {
   border-right: 1px solid #bebebe;
@@ -840,6 +999,7 @@ option {
     transform: translateY(0); } }
 
 .main-upload {
+  border-top: 3px solid #007bff;
   transition: all 0.2s linear;
   width: 90% !important;
   height: 70%;
@@ -865,3 +1025,64 @@ a:active {
 .show-animation-list {
   transition: all 0.3s linear;
   animation: fade2 0.35s linear; }
+
+.main-show-error {
+  font-size: 0.9rem;
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 5px;
+  margin: auto auto;
+  width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 0 5px black; }
+
+.main-show-error a {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  margin: 8px auto; }
+
+.change-khoi-popup-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 11000; }
+
+.chose-table-box {
+  margin: 15px auto;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  width: 80%;
+  background-color: white;
+  box-shadow: 0 0 5px black; }
+
+.show-popup-change-animation {
+  animation: scaleChange 0.2s linear; }
+
+@keyframes scaleChange {
+  from {
+    opacity: 0;
+    transform: scale(0); }
+  to {
+    opacity: 1;
+    transform: scale(1); } }
+
+.chose-table-box a {
+  color: #007bff;
+  text-align: center;
+  margin: 8px 0;
+  padding: 5px 10px;
+  width: 80%;
+  border: 1px solid #ccc; }
