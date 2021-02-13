@@ -86,6 +86,12 @@
     const header = $('.header');
     const mainUpload = $(".main-upload");
     const statusValue = document.getElementById('status').getAttribute("value");
+    if(statusValue === '') {
+      
+    $('#popup-show-message-modal').css('display', 'block')
+
+
+    }
     
     if(statusValue == "success") {
 $('#popup-show-message-modal').css('display', 'none')

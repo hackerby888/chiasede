@@ -55,6 +55,7 @@
 
          if(data.admin) {
              $( document ).ready(function() {
+    $('#header').append(`<span id="user-show">${data.user}</span>`)
     $('#more-controller').append(`<a href="/listBanned"><div class="more-upload items more"><i class="far fa-list-alt"></i>List Banned</div></a>`)
     $('#more-controller').append(`<a href="/resetId"><div class="more-upload items more"><i class="fab fa-instalod"></i>Reset ID</div></a>`)
 });
@@ -97,7 +98,7 @@
 
         <div class="content" id="content">
             <div class="slider slider-off" id="slider">
-                <div class="text-slider-title"><span>Bảng Điều Khiển</span></div>
+                <div class="text-slider-title" id="text-slider-title"><span>Bảng Điều Khiển</span></div>
                 <div class="controller">
                     <a href="/" id="btn-to-home"><div class="home items" id="page-home"><i class="fas fa-home"></i><span id="show-khoi-drawer">Home - Khối 10</span></div></a>
                      <div class="more items" id="btn-show-more"><i class="fas fa-cog"></i>Tiện Ích</div>

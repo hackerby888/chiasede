@@ -8,6 +8,10 @@ html,body {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 }
 
+#show-khoi-drawer {
+    background: none !important;
+}
+
 * {
     font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
@@ -58,7 +62,7 @@ a {
 
 .popup-show-message-modal {
     padding-top: 10px;
-    display: block;
+    display: none;
     z-index: 10000;
     position: fixed;
     top: 0;
@@ -275,6 +279,7 @@ a {
 }
 
 .text-slider-title {
+    position: relative;
     padding-left: 21px;
     display: flex;
     justify-content: flex-start;
@@ -1182,17 +1187,18 @@ b {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5px;
+    padding: 2px;
     width: 20%;
 }
 
 #btn-active-ip {
+    
     font-size: 12px;
     border: none;
     outline: none;
     padding: 4px;
     background: none;
-    border: 1px solid rgb(0, 255, 55);
+    
     color: rgb(0, 255, 76);
     border-radius: 2px;
 }
@@ -1311,6 +1317,7 @@ a:active {
 }
 
 .chose-table-box a {
+    transition: all 0.2s linear;
     color: #007bff;
     text-align: center;
     margin: 8px 0;
@@ -1318,4 +1325,22 @@ a:active {
     width: 80%;
     border: 1px solid #ccc;
     
+}
+
+
+#user-show {
+    
+    transition: all 0.3s linear;
+    border-top-left-radius: 10px;
+    padding: 3px 5px;
+    border: 2px solid white;
+    font-size: 0.9rem;
+    color: white;
+    margin-left: 20px;
+}
+
+#user-show:hover {
+    font-weight: bold;
+    color: red;
+    border: 2px solid red;
 }

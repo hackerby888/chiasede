@@ -12,6 +12,7 @@ function checkRole(req,res,next) {
 
                 if(data.password === pass) {
                     res.send({
+                        user: user,
                         admin: true
                     })
                 
