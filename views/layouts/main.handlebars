@@ -81,11 +81,14 @@
     </div>
 
     <div class="change-khoi-popup-modal">
-                <div class="chose-table-box">
-                    <span style="margin-top: 3px; font-style: italic;">Vui lòng chọn khối cần đến!</span>
+                <div class="chose-table-box" id="chose-table-box">
+                    <span style="margin-top: 3px; padding: 6px 0px">Vui lòng chọn khối cần đến!</span>
+                    <div class="submit-go-link-change">
                     <a href="/khoi-10">Khối 10</a>
                     <a href="/khoi-11">Khối 11</a>
                     <a href="/khoi-12">Khối 12</a>
+                    </div>
+                    <button id="close-change-modal">TẮT</button>
                 </div>
     </div>
     
@@ -121,6 +124,7 @@
 
 </body>
 <script>
+   
       const showKhoi = $('#show-khoi')
       const modal = $('#popup-show-message-modal');
       const btnClose = document.getElementById('btn-close-modal')
@@ -209,9 +213,16 @@
             $('.change-khoi-popup-modal').css('display', 'block');
           })
 
-          $('.change-khoi-popup-modal').click((e) => {
-                $('.chose-table-box').remove('show-popup-change-animation')
-            e.target.style.display = 'none'
+         
+
+
+          $('#close-change-modal').click(() => {
+              setTimeout(() => {
+$('.change-khoi-popup-modal').css('display', 'none');
+$('.change-khoi-popup-modal').removeClass('animation-change-modal-hide');
+              }, 200)
+             $('.change-khoi-popup-modal').addClass('animation-change-modal-hide');
+             
           })
           
 </script>
