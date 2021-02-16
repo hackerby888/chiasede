@@ -1079,6 +1079,17 @@ a:active {
   border: 2px solid rgba(0, 0, 0, 0.836);
   box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.274); }
 
+.animation-hide-chose-table-box {
+  animation: animationhidechosetablebox .3s linear !important; }
+
+@keyframes animationhidechosetablebox {
+  from {
+    transform: scale(1);
+    opacity: 1; }
+  to {
+    transform: scale(0);
+    opacity: 0; } }
+
 .submit-go-link-change {
   width: 100%;
   padding: 3px;
@@ -1112,16 +1123,12 @@ a:active {
 
 @keyframes hideChageModal {
   0% {
-    transform: scale(1);
     opacity: 1; }
   25% {
-    transform: scale(0.75);
     opacity: .75; }
   50% {
-    transform: scale(0.5);
     opacity: .5; }
   75% {
-    transform: scale(0.25);
     opacity: .25; }
   100% {
     opacity: 0; } }
