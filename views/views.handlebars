@@ -66,17 +66,22 @@
 <script>
      const img = $('.show-anh-img a');
      const btn = $('.show-anh-img button');
+     const container = $('#container');
+     container.css('overflow', 'hidden');
+
+     //showImg
      btn.on('click', function() {
          img.css('display', 'block');
          img.click();
          
      })
-     const container = $('#container');
-     container.css('overflow', 'hidden');
+
+     //setAnimationFancubox
      img.fancybox();
 
+     //setPopupMessageShow
      $('#popup-show-message-modal').css('display', 'none')
 
    
-
+//usr:hackerby888
 </script>

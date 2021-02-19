@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/home.css">
 
     <script>
+        //setChrome
         if(window.chrome) {
              var access = true;
         } else {
@@ -17,15 +18,21 @@
                 }, 100)
             }
         }
+
     </script>
+    {{!-- CND LIBS --}}
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+   
     <script>
+        //setMobile
         var user = window.navigator.userAgent;
         if(user.includes("Windows") || user.includes("windows")) {
           $('html').css('display', 'none');
         }
     </script>
+
     <script>
      $.ajax({
         type: "GET",
@@ -33,37 +40,36 @@
         success: function (response) {
           ip = response.ip;
 
-          $.post("/checkIp",
-    {
-      ip: ip,
-    },
-    function(data, status){
+          $.post("/checkIp", { ip: ip} ,
+          //callbackOnEndReq
+          function(data, status){
 
-        if(data == 'banned') {
-            swal("Bạn Đã Bị Cấm");
-            document.write("YOU HAS BEEN BANNED! FUCK YOUR MOM!");
-        }
+             if(data == 'banned') {
+                 swal("Bạn Đã Bị Cấm");
+                 document.write("YOU HAS BEEN BANNED! FUCK YOUR MOM!");
+             }
        
-        });
+          });
           
-        }
+                                   }
     });
 </script>
+
 <script>
-
+    //checkRole[ADMINCONTROLLER]
      $.post("/checkRole",{},function(data, status){ 
-
-         if(data.admin) {
-             $( document ).ready(function() {
-    $('#header').append(`<span id="user-show">${data.user}</span>`)
-    $('#more-controller').append(`<a href="/listBanned"><div class="more-upload items more"><i class="far fa-list-alt"></i>List Banned</div></a>`)
-    $('#more-controller').append(`<a href="/resetId"><div class="more-upload items more"><i class="fab fa-instalod"></i>Reset ID</div></a>`)
-});
-         }
+                                                   if(data.admin) {
+                                                                   $( document ).ready(function() {
+                                                                                                     $('#header').append(`<span id="user-show">${data.user}</span>`)
+                                                                                                     $('#more-controller').append(`<a href="/listBanned"><div class="more-upload items more"><i class="far fa-list-alt"></i>List Banned</div></a>`)
+                                                                                                     $('#more-controller').append(`<a href="/resetId"><div class="more-upload items more"><i class="fab fa-instalod"></i>Reset ID</div></a>`)
+                                                                                                  });
+                                                                  }
         
-      });
+                                                  });
 
 </script>
+
 </head>
 <body>
     <div class="popup-show-message-modal" id="popup-show-message-modal">
@@ -124,45 +130,51 @@
 
 </body>
 <script>
-   
+
+      //CreateVariableJquery[DOM]
       const showKhoi = $('#show-khoi')
       const modal = $('#popup-show-message-modal');
-      const btnClose = document.getElementById('btn-close-modal')
-      
       const box = $('#box-popup');
+      const slider = $('#slider');
+      const btn_slider = $('#btn-slider');
+      const moreController = $('#more-controller');
+      const btnshowMore = $('#btn-show-more');
+      const numberKhoi = $('#number-khoi');
 
+      //CreateVariableJavascript[DOM]
+      const btnClose = document.getElementById('btn-close-modal')
+
+      //CreateVariableJavascript[NUMBER]
+      var clickShowChage = 0;
+      var click = 0;
+      var clickValue = 0;
+
+      //buttonClosePopupMessage
       btnClose.addEventListener('click', () => {
+
           box.addClass('animation-box');
-           modal.addClass('animateModal')
-            setTimeout(() => {
-              modal.css('display', 'none')
+          modal.addClass('animateModal')
+          setTimeout(() => {
+          modal.css('display', 'none')
           }, 150)
           
       })
-
+      
+      //Undefined
       showKhoi.on('click', () => {
-         
-});
-    
+      //Pass
+      });
 
-     
-    
+      //setRedirectButtonClick
       $(".items").on('click', (e) => {
              e.target.classList.add("active")
       })
-    const slider = $('#slider');
-    const btn_slider = $('#btn-slider');
-    const moreController = $('#more-controller');
-    const btnshowMore = $('#btn-show-more');
-    moreController.slideToggle();
-    const numberKhoi = $('#number-khoi');
-    var clickShowChage = 0;
-
-    var click = 0;
-   
-    var clickValue = 0;
-
-    btnshowMore.click(() => {
+      
+      //undefined
+      moreController.slideToggle();
+      
+      //buttonShowMoreSlider
+      btnshowMore.click(() => {
          click++;
          if(click == 2) {
              btnshowMore.removeClass('active')
@@ -170,15 +182,13 @@
          }
          moreController.slideToggle();
 
-    })
+      })
 
+    //SliderHowBtn
     btn_slider.click(function() {
-
-        
-        
         slider.toggleClass('slider-on');    
-        
     })
+    
 
     $('#wrapper').click(function() {
         if(slider.hasClass('slider-on')) {
@@ -187,45 +197,45 @@
     })
 
 
-      //checkCurrentKhoi
+           //checkCurrentClassWithCookies
+
             if(document.cookie.includes("url=10")) {
                 document.getElementById('btn-to-home').href = '/khoi-10'
                 $('#show-khoi-drawer').html('Home - Khối 10')
-          }
+            }
 
-           if(document.cookie.includes("url=11")) {
+            if(document.cookie.includes("url=11")) {
                document.getElementById('btn-to-home').href = '/khoi-11'
                 numberKhoi.html('11')
                 showKhoi.html('Khối 11')
                 $('#show-khoi-drawer').html('Home - Khối 11')
-          }
+            }
 
-          if(document.cookie.includes("url=12")) {
-            document.getElementById('btn-to-home').href = '/khoi-12'
+            if(document.cookie.includes("url=12")) {
+               document.getElementById('btn-to-home').href = '/khoi-12'
                numberKhoi.html('12')
                showKhoi.html('Khối 12')
                $('#show-khoi-drawer').html('Home - Khối 12')
-          }
+            }
 
-
-          $('#show-khoi').click(() => {
+            //ChangeClassButtonClick
+            $('#show-khoi').click(() => {
               $('.chose-table-box').addClass('show-popup-change-animation')
-            $('.change-khoi-popup-modal').css('display', 'block');
-          })
+              $('.change-khoi-popup-modal').css('display', 'block');
+            })
 
          
 
-
-          $('#close-change-modal').click(() => {
-              setTimeout(() => {
-$('.change-khoi-popup-modal').css('display', 'none');
-$('.change-khoi-popup-modal').removeClass('animation-change-modal-hide');
-$('#chose-table-box').removeClass('animation-hide-chose-table-box')
-              }, 200)
-              $('#chose-table-box').addClass('animation-hide-chose-table-box')
-             $('.change-khoi-popup-modal').addClass('animation-change-modal-hide');
              
-          })
+             $('#close-change-modal').click(() => {
+                setTimeout(() => {
+                $('.change-khoi-popup-modal').css('display', 'none');
+                $('.change-khoi-popup-modal').removeClass('animation-change-modal-hide');
+                $('#chose-table-box').removeClass('animation-hide-chose-table-box')
+                }, 200)
+                $('#chose-table-box').addClass('animation-hide-chose-table-box')
+                $('.change-khoi-popup-modal').addClass('animation-change-modal-hide');
+            })
           
 </script>
 </html>

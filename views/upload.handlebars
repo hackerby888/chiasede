@@ -65,82 +65,88 @@
 
 
 <script>
-
+    
+    //functionShowMessage[ADD]WhenAddQuestions
     function show_add() {
        controller_qs.append(` <div class="add-tus-act" style="font: 400 12px Arial;">+1 Câu Hỏi</div>`)
     }
+
+    //functionUnShowMessage[ADD]WhenDelQuestions
     function re_show_add() {
         $('.add-tus-act').remove();
     }
     
+    //functionShowMessage[DEL]WhenDelQuestions
     function show_del() {
          controller_qs.append(` <div class="delete-tus-act" style="font: 400 12px Arial;">-1 Câu Hỏi</div>`)
     }
-
-     function re_show_del() {
+    
+    //functionUnShowMessage[DEL]WhenAddQuestions
+    function re_show_del() {
         $('.delete-tus-act').remove();
     }
-     const controller_qs = $(".controller-qs")
+    
+    //CreateVariableJquery[DOM]
+    const btntohome = $('.backhome');
+    const moreControllerfires = $('#more-controller');
+    const controller_qs = $(".controller-qs")
     const tusDelete = $('.delete-tus-dis')
     const tusAdd =  $('.add-tus-act')
     const header = $('.header');
     const mainUpload = $(".main-upload");
+    const container = $('#container');
+    const btn_them_ch = $('#add-qs');
+    const btn_xoa_ch = $('#delete-qs');
+    const inputUpload = $('#input-upload');
+    const btnSubmit = $('.submit-upload button');
+
+    //CreateVariableJavascript[DOM]
+    const form = document.forms['container-form'];
+    const ben_them_ch_2 = document.getElementById("add-qs")
+    const fileInput  = document.getElementById('file-input');
     const statusValue = document.getElementById('status').getAttribute("value");
+    const allInputText = document.getElementsByClassName('input-soan-noi-dung');
+    const noidungcauhoi = document.getElementsByClassName('noidung');
+
+    //setBoxShadowForHeaders
+    header.css('box-shadow', '0px 0px 8px #656565')
+
+    //{{!-- checkUpload --}}\\
+    //*[noUpload]
     if(statusValue === '') {
-      
-    $('#popup-show-message-modal').css('display', 'block')
-
-
-    }
-    
+        $('#popup-show-message-modal').css('display', 'block')
+                           }
+    //*[uploadSuccess]
     if(statusValue == "success") {
-$('#popup-show-message-modal').css('display', 'none')
+        $('#popup-show-message-modal').css('display', 'none')
         mainUpload.css('height', 'initial')
-
         mainUpload.html(`
         <div class="toast-success">Đăng đề thành công!. Cảm ơn bạn</div>
         <a class="backhome" href="${document.getElementById('urlback').value}">Trở về trang chủ</a>
         `)
-
-        const btntohome = $('.backhome');
-
+        //**redirectToHome(cookiesWillRedirectToClass)**//
         btntohome.on('click', () => {
             location.href = $('#')
         })
-
-    }
-
+                                }
+    //*[uploadError]
     if(statusValue == "error") {
         $('#popup-show-message-modal').css('display', 'none')
         mainUpload.css("height", "initial")
+        mainUpload.html(`<div class="toast-error">Đăng đề thất bại!. Vui lòng kiểm tra lại nội dung</div>
+        <a class="backhome" href="${document.getElementById('urlback').value}">Trở về trang chủ</a>`)
+                              }
 
-        
-
-        mainUpload.html(`
-        <div class="toast-error">Đăng đề thất bại!. Vui lòng kiểm tra lại nội dung</div>
-        <a class="backhome" href="${document.getElementById('urlback').value}">Trở về trang chủ</a>
-        `)
-
-
-
-    }
-    const form = document.forms['container-form'];
-    const btnSubmit = $('.submit-upload button');
-    const fileInput  = document.getElementById('file-input');
-    const container = $('#container');
-    const allInputText = document.getElementsByClassName('input-soan-noi-dung');
-    const noidungcauhoi = document.getElementsByClassName('noidung');
-    const btn_them_ch = $('#add-qs');
-    const ben_them_ch_2 = document.getElementById("add-qs")
-    const btn_xoa_ch = $('#delete-qs');
-    const inputUpload = $('#input-upload');
+                         
+    //setBackgroundOnlyForUploadViews
     container.css('overflow', 'visible');
     $('html').css('background', '#f1f4f6');
     $('#page-post').addClass('active');
-    var moreControllerfires = $('#more-controller');
     moreControllerfires.slideToggle();
-    var index_cau = 1;
 
+    //LogicWhenClickAddOrDeleteQuestionJavascript
+    var index_cau = 1;
+    //[ADD]
     btn_them_ch.click(function() {
 
         index_cau++;
@@ -156,80 +162,62 @@ $('#popup-show-message-modal').css('display', 'none')
         inputUpload.append(`<div class="noidung noidung${index_cau}">
                 <div class="index-socau">Câu ${index_cau}</div>
                 <input type="text" class="input-soan-noi-dung" name="body" required>
-            </div>`)
-
-            inputUpload.scrollTop($(`.noidung${index_cau}`).offset().top)
-            tusAdd.addClass('add-tus-act')  
-            re_show_del();
-            re_show_add();
-                 show_add();
-                 
-
-
-            
-
-            
-
+                </div>`)
+               
+               //AnimationShowMessage[ADD]
+               inputUpload.scrollTop($(`.noidung${index_cau}`).offset().top)
+               tusAdd.addClass('add-tus-act')  
+               re_show_del();
+               re_show_add();
+               show_add();
 
     })
-
+ 
+    //[DELETE]
     btn_xoa_ch.click(function() {
-
         if(index_cau != 1) {
-
             $(`.noidung${index_cau}`).remove();
-           index_cau--;   
-
+            index_cau--;   
         }
-        re_show_del();
+        //AnimationShowMessage[DEL]
+         re_show_del();
          re_show_add();
          show_del();
         
     })
 
+    //SUBMITFORMUPLOAD
     btnSubmit.on('click', (e) => {
-
-
         e.preventDefault();
-
+        //Popup
         swal({
-  title: "Bạn có chắc?",
-  text: "Bạn có chắc muốn đăng đề này? Nếu vi quy tắc bạn sẽ bị cấm vĩnh viễn",
-  icon: "warning",
-  buttons: true,
-  dangerMode: true,
-})
-.then((willDelete) => {
-  if (willDelete) {
-
-      
-    if(fileInput.files.length > 8) {
-
-        swal({
-  title: "Thất Bại!",
-  text: "Bạn không được chọn quá 8 ảnh!",
-  icon: "error",
-  button: "OK",
-});
-    } else {
-        form.submit();
-    }
+              title: "Bạn có chắc?",
+              text: "Bạn có chắc muốn đăng đề này? Nếu vi quy tắc bạn sẽ bị cấm vĩnh viễn",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            })
+            //LogicWhenClickYesOrNo
+            .then((willDelete) => {
+               if (willDelete) {
+               if(fileInput.files.length > 8) {
+                    swal({
+                          title: "Thất Bại!",
+                          text: "Bạn không được chọn quá 8 ảnh!",
+                          icon: "error",
+                          button: "OK",
+                         });
+                                              } else {
+                                                      form.submit();
+                                                      }
     
     
-  } else {
-   
-  }
-});
-
-
-
-
-
+                               } else {
+                                 //Pass
+                                      }
+                                  });
 
     })
 
-    header.css('box-shadow', '0px 0px 8px #656565')
-
-
-   
+//usr:hackerby888 
 </script>
